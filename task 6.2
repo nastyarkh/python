@@ -1,0 +1,33 @@
+file = open('input2.txt', 'r', encoding = 'utf8')
+
+dict = {}
+for line in file:
+    a = list(map(str, line.split()))
+    for i in range(len(a)):
+        if a[i] not in dict.keys():
+            dict[a[i]] = 1
+        else:
+            dict[a[i]] += 1
+
+lst = []
+for key in dict:
+    a = (dict[key], key)
+    lst.append(a)
+
+#def func1(x):
+   # return x[0]
+
+#for n in sorted(lst, key = func, reverse = True):
+ #   print(n[1], end = ' ')
+
+# Сортируем по словам
+lst.sort(key = lambda el: el[1])
+# Сортируем по частоте в обратном порядке
+lst.sort(key = lambda el: el[0], reverse = True)
+
+file = open('output.txt', 'w', encoding='utf8')
+
+for el in lst:
+    file.write(el[1] + ' ')
+    
+fin.close()
